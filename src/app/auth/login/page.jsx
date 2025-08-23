@@ -43,7 +43,7 @@ const Login = () => {
 
           {/* Heading and para */}
           <div className="flex flex-col text-center">
-            <h1 className="text-xl sm:text-2xl md:text-3xl text-yellow-500 font-bold">
+            <h1 className="text-xl sm:text-2xl md:text-3xl bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent font-bold">
               Treasure Quest
             </h1>
             <p className="text-white px-2 text-xs sm:text-sm md:text-base">
@@ -163,6 +163,8 @@ const Login = () => {
               </select>
             </label>
           </div>
+
+          <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 w-full py-2 rounded hover:from-yellow-600 hover:to-yellow-600 text-black font-semibold">Begin treasure Hunt</button>
         </form>
       </div>
     </div>
