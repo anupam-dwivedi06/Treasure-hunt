@@ -36,7 +36,6 @@ export async function POST(req) {
 
     if (!res.data) {
       return NextResponse.json(
-        console.log("Login failed"),
         { error: "ERP login failed" },
         { status: 401 }
       );
