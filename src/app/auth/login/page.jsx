@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import bgImage from "@/assets/treasure-bg.jpg";
 import location from "@/assets/location.png";
+import compass from "@/assets/compass.svg"
 
 const Login = () => {
   const [formdata, setformdata] = useState({
@@ -163,8 +164,7 @@ const Login = () => {
               </select>
             </label>
           </div>
-
-          <button className="bg-gradient-to-r from-yellow-400 to-yellow-600 w-full py-2 rounded hover:from-yellow-600 hover:to-yellow-600 text-black font-semibold">Begin treasure Hunt</button>
+          <button type="submit" className="flex justify-center gap-5 bg-gradient-to-r from-yellow-400 to-yellow-600 w-full py-2 rounded hover:from-yellow-600 hover:to-yellow-600 text-black font-semibold"> <span className="text-black"><Image src={compass} alt="compass" className="text-blck"/></span>Begin treasure Hunt</button>
         </form>
       </div>
     </div>
