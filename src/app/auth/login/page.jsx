@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 import bgImage from "@/assets/treasure-bg.jpg";
 import location from "@/assets/location.png";
-import compass from "@/assets/compass.svg"
+import compass from "@/assets/compass.svg";
 
 const Login = () => {
   const [formdata, setformdata] = useState({
@@ -20,6 +20,30 @@ const Login = () => {
     setformdata({ ...formdata, [e.target.name]: e.target.value });
   };
 
+  const handlesubmit = async (e) => {
+    e.preventDefault();
+
+    const {
+      teamname,
+      scholernumber,
+      password,
+      branch,
+      teammembername,
+      memberscnumber,
+      memberbranch,
+    } = formdata;
+
+    try {
+      const res = await fetch("/api/auth", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formdata),
+      });
+    } catch (error) {
+      console.log("Error in form submission");
+    }
+  };
+
   return (
     <div className="flex relative">
       <Image
@@ -31,6 +55,7 @@ const Login = () => {
       <div className="flex absolute justify-center items-center w-screen h-screen p-4">
         <form
           action="submit"
+          onSubmit={handlesubmit}
           className="w-full max-w-[90vw] sm:max-w-[70vw] md:max-w-[50vw] lg:max-w-[35vw] h-[85vh] overflow-auto no-scrollbar bg-[#271F19] flex flex-col items-center py-6 px-6 rounded-xl space-y-4"
         >
           {/* Logo Circle */}
@@ -164,7 +189,16 @@ const Login = () => {
               </select>
             </label>
           </div>
-          <button type="submit" className="flex justify-center gap-5 bg-gradient-to-r from-yellow-400 to-yellow-600 w-full py-2 rounded hover:from-yellow-600 hover:to-yellow-600 text-black font-semibold"> <span className="text-black"><Image src={compass} alt="compass" className="text-blck"/></span>Begin treasure Hunt</button>
+          <button
+            type="submit"
+            className="flex justify-center gap-5 bg-gradient-to-r from-yellow-400 to-yellow-600 w-full py-2 rounded hover:from-yellow-600 hover:to-yellow-600 text-black font-semibold"
+          >
+            {" "}
+            <span className="text-black">
+              <Image src={compass} alt="compass" className="text-blck" />
+            </span>
+            Begin treasure Hunt
+          </button>
         </form>
       </div>
     </div>
